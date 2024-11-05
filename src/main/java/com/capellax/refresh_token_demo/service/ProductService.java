@@ -1,4 +1,4 @@
-package com.capellax.refresh_token_demo;
+package com.capellax.refresh_token_demo.service;
 
 import com.capellax.refresh_token_demo.dto.Product;
 import com.capellax.refresh_token_demo.model.User;
