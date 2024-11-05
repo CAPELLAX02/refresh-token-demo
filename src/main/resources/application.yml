@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: refresh-token-demo
+  datasource:
+    url: jdbc:postgresql://localhost:5432/refresh_token_db
+    username: postgres
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
