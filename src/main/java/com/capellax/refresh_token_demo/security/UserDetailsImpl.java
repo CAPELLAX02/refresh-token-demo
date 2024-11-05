@@ -1,6 +1,6 @@
 package com.capellax.refresh_token_demo.security;
 
-import model.User;
+import com.capellax.refresh_token_demo.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

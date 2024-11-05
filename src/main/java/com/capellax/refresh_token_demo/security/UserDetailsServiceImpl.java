@@ -2,7 +2,7 @@ package com.capellax.refresh_token_demo.security;
 
 import com.capellax.refresh_token_demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import model.User;
+import com.capellax.refresh_token_demo.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

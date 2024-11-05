@@ -1,6 +1,6 @@
 package com.capellax.refresh_token_demo.repository;
 
-import model.RefreshToken;
+import com.capellax.refresh_token_demo.model.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
