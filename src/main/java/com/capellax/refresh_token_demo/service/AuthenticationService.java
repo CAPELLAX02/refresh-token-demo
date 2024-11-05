@@ -1,9 +1,11 @@
 package com.capellax.refresh_token_demo.service;
 
 import com.capellax.refresh_token_demo.model.RefreshToken;
+import com.capellax.refresh_token_demo.model.User;
 import com.capellax.refresh_token_demo.repository.RefreshTokenRepository;
 import com.capellax.refresh_token_demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -12,10 +14,19 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class RefreshTokenService {
+public class AuthenticationService {
 
     private final RefreshTokenRepository refreshTokenRepository;
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    public String addUser(
+            User user
+    ) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+        return "User added to the system!";
+    }
 
     public RefreshToken createRefreshToken(
             String username

@@ -1,24 +1,17 @@
 package com.capellax.refresh_token_demo.service;
 
 import com.capellax.refresh_token_demo.dto.Product;
-import com.capellax.refresh_token_demo.model.User;
-import com.capellax.refresh_token_demo.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Service
-@RequiredArgsConstructor
 public class ProductService {
-
-    private UserRepository userRepository;
-    private PasswordEncoder passwordEncoder;
 
     List<Product> productList = null;
 
@@ -40,20 +33,12 @@ public class ProductService {
     }
 
     public Product getProductById(
-            int productId
+            Long productId
     ) {
         return productList.stream()
-                .filter(product -> product.getProductId() == productId)
+                .filter(product -> Objects.equals(product.getProductId(), productId))
                 .findAny()
                 .orElseThrow(() -> new RuntimeException("Product (" + productId + ") not found."));
-    }
-
-    public String addUser(
-            User user
-    ) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
-        return "User added to the system!";
     }
 
 }

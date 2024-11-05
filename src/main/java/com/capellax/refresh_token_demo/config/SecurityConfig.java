@@ -35,16 +35,18 @@ public class SecurityConfig {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth.requestMatchers(
-                                "/auth/register",
-                                "/auth/login",
-                                "/auth/refreshToken"
-                        )
-                        .permitAll()
-                        .requestMatchers(
-                                "/auth/**"
-                        )
-                        .authenticated())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                                        "/auth/register",
+                                        "/auth/login",
+                                        "/auth/refreshToken"
+                                ).permitAll()
+                                .requestMatchers(
+                                        "/products/**"
+                                ).authenticated()
+                                .anyRequest().authenticated()
+                )
+                .sessionManagement(session -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
